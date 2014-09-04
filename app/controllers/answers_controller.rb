@@ -14,6 +14,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def change_like
+    @answer = Answer.find(params[:answer_id])
+    @like = AnswerLike.new
+    @like.answer_id = @answer.id
+    @like.user_id = current_user.id
+    @like.save
+    redirect_to question_path(@question)
+  end
+
   private
 
     def set_question

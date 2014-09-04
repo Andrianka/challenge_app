@@ -3,6 +3,11 @@
   .details
     '  Answered on
     = l(answer.created_at, format: :long)
-    '  by
+    '  by 
     = link_to answer.user, user_path(answer.user)
+    -if signed_in? && answer.islike(current_user)
+    	p You liked it 
+    -elsif signed_in?
+    	p = link_to "Like",change_like_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
+    p = "#{answer.answer_likes.count} like"
 
