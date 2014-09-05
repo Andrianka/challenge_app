@@ -23,6 +23,18 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def accept
+    @answer = Answer.find(params[:answer_id])
+    @answer_to_deactivate = Answer.where(:question_id=>params[:question_id], :accept=>true).first
+    if @answer.accept == false
+      @answer_to_deactivate.accept = false unless @answer_to_deactivate.nil?
+      @answer_to_deactivate.save unless @answer_to_deactivate.nil?
+      @answer.accept = true
+      @answer.save
+    end  
+  redirect_to question_path(@question)
+  end
+
   private
 
     def set_question

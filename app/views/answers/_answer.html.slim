@@ -9,5 +9,7 @@
     	p You liked it
     -else
     	p = link_to "Like",change_like_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
+    p = link_to "Accept", accept_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
+    p = answer.accept
     p = "#{answer.answer_likes.count} like"
 

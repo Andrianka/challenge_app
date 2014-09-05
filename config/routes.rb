@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:create] do
       collection do
         get 'change_like'
+        get 'accept'
       end
     end
   end
