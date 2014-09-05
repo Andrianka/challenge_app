@@ -1,24 +1,16 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :user
-  has_many :answer_likes
+  has_many :answer_likes,  dependent: :destroy
 
   validates_presence_of :contents
 
-  def self.current
-    Thread.current[:user]
+  def islike(user, p=false)
+    self.answer_likes.each do |a|
+      if a.user_id == user.id
+        p = true
+      end
+    end
+    return p
   end
-  def self.current=(user)
-    Thread.current[:user] = user
-  end
-
-  def islike(user)
-  	self.answer_likes.each do |answer|
-  		if answer.user_id == user.id
-  			true
-  		else
-  			false
-  		end
-  	end
-	end
 end
