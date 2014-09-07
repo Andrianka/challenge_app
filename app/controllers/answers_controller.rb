@@ -16,21 +16,34 @@ class AnswersController < ApplicationController
 
   def change_like
     @answer = Answer.find(params[:answer_id])
+    user = @answer.user
     @like = AnswerLike.new
     @like.answer_id = @answer.id
     @like.user_id = current_user.id
-    @like.save
-    redirect_to question_path(@question)
+    if @like.save
+      user.points +=5
+      user.save
+      redirect_to question_path(@question)
+    end
   end
 
   def accept
     @answer = Answer.find(params[:answer_id])
+    user = @answer.user
     @answer_to_deactivate = Answer.where(:question_id=>params[:question_id], :accept=>true).first
+    user_deactivate = @answer_to_deactivate.user unless @answer_to_deactivate.nil?
     if @answer.accept == false
-      @answer_to_deactivate.accept = false unless @answer_to_deactivate.nil?
-      @answer_to_deactivate.save unless @answer_to_deactivate.nil?
+      unless @answer_to_deactivate.nil?
+        @answer_to_deactivate.accept = false 
+        @answer_to_deactivate.save 
+        user_deactivate.points -=25
+        user_deactivate.save
+      end
+
       @answer.accept = true
       @answer.save
+      user.points +=25
+      user.save
     end  
   redirect_to question_path(@question)
   end

@@ -20,8 +20,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-
+    user = current_user
+    user.points -=10
     if @question.save
+      user.save
       redirect_to @question, notice: 'Question was successfully created.'
     else
       render :new

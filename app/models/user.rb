@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :answer_likes
 
+  has_attached_file :avatar, :styles => { :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path("noimage.jpg");
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   def to_s
     email
   end

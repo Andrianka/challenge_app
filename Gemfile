@@ -33,3 +33,4 @@ group :test do
   gem "rspec-rails"
 end
 
+gem 'paperclip'

@@ -5,11 +5,13 @@
     = l(answer.created_at, format: :long)
     '  by 
     = link_to answer.user, user_path(answer.user)
-    -if answer.islike(current_user)
+    -if user_signed_in? && answer.islike(current_user)
     	p You liked it
-    -else
+    -elsif user_signed_in? && answer.user_id != current_user.id
     	p = link_to "Like",change_like_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
-    p = link_to "Accept", accept_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
-    p = answer.accept
-    p = "#{answer.answer_likes.count} like"
+    = "#{answer.answer_likes.count} like"
+    -if current_user.id == @question.user.id && answer.accept == false
+    	p = link_to "Accept", accept_question_answers_path(:question_id=>params[:id],:answer_id=>answer.id)
+    -elsif answer.accept == true
+    	p = "Accepted"
 

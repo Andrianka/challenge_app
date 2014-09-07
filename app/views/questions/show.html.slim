@@ -19,13 +19,14 @@
   - else
     '  There are no answers to this question.
 
-  h3 Add answer
+  -unless @question.answers.where(:accept=>true).first
+    h3 Add answer
 
-  = form_for [@question, @answer] do |f|
+    = form_for [@question, @answer] do |f|
 
-    .field
-      = f.label :contents
-      = f.text_area :contents
+      .field
+        = f.label :contents
+        = f.text_area :contents
 
-    .actions= f.submit 'Save'
+      .actions= f.submit 'Save'
 
