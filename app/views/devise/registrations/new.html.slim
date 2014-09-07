@@ -6,7 +6,12 @@ h1 Sign up
   .field
     label= f.label :email
     = f.email_field :email, autofocus: true
-
+  .field
+    = f.label :first_name
+    = f.text_field :first_name, autofocus: true
+  .field
+    = f.label :last_name
+    = f.text_field :last_name, autofocus: true
   .field
     label= f.label :password
     = f.password_field :password, autocomplete: 'off'
