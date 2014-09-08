@@ -25,9 +25,9 @@ Feature: Points
   Scenario: Having answer liked
     Given I added an answer
      When This answer is liked
-     Then I should have 105 points
+     Then I should have 105 points for the answer
 
   Scenario: Having answer accepted
     Given I added an answer
      When This answer is accepted
-     Then I should have 125 points
+     Then I should have 125 points for the answer

@@ -22,7 +22,7 @@ Then(/^I should not see this question$/) do
   expect(page).not_to have_content "by #{@user}"
 end
 
-Given(/^There is a question/) do
+Given(/^There is a question$/) do
   @question = create(:question)
 end
 
@@ -36,4 +36,9 @@ end
 
 When(/^I am on question's page$/) do
   visit question_path(@question)
+end
+
+Given(/^There is a question created by another user$/) do
+  @another_user = create(:user)
+  @question = create(:question, user: @another_user)
 end

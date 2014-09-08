@@ -32,6 +32,7 @@ h2 Edit Profile
     = f.label :avatar, "Upload avatar"
     = f.file_field :avatar
   = image_tag @user.avatar.url(:thumb)
+  = link_to "Delete avatar", delete_avatar_path, method: :delete
   div
     = f.submit "Update"
 

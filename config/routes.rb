@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   root to: 'questions#index'
 
@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] 
+  
+  devise_scope :user do
+    delete 'delete_avatar' => 'registrations#delete_avatar'
+  end
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
