@@ -21,12 +21,17 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user = current_user
     user = current_user
-    user.points -=10
-    if @question.save
-      user.save
-      redirect_to @question, notice: 'Question was successfully created.'
+    if user.points - 10 >= 0 
+      if @question.save
+        user.points -=10
+        user.save
+        redirect_to @question, notice: 'Question was successfully created.'
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:error] = "You haven't enough points to create a question"
+      redirect_to @question
     end
   end
 
