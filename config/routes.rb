@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show] 
+  resources :users, only: [:show] do
+    collection do
+      get 'leadboard'
+    end
+  end
   
   devise_scope :user do
     delete 'delete_avatar' => 'registrations#delete_avatar'

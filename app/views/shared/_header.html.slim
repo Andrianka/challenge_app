@@ -13,6 +13,8 @@ header
     '  |
     = link_to "Profile", edit_user_registration_path
     '  |
+    = link_to "Leadboard", leadboard_users_path
+    '  |
     = "You have #{current_user.points} points"
     -if current_user.badge == true
       =image_tag 'badge.png', size:"40x40"
