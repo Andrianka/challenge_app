@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, :only=> [:show]
 
   def show
+  end
+
+  def leaderboard
+  	@users = User.all.order('points DESC')
   end
 
   private
