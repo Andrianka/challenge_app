@@ -15,3 +15,24 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+function set_like(number){
+	if(number !=0 && number !=1){ 
+		return " likes";
+	}
+	else{
+		return " like";
+	}
+}
+$(document).ready(function(){
+	$("a[data-remote]").on('click', function(){
+			var like = $(this).data('value');
+			var id = $(this).data('id')
+			like++;
+			$('#like_id_'+id).text(like + set_like(like));
+			var text = $('<p>You liked it</p>');
+			$('.count ').find('#like_id_'+id).prepend(text);
+			$(this).remove();
+	});
+});
+  	

@@ -13,4 +13,12 @@ class Answer < ActiveRecord::Base
     end
     return p
   end
+
+  def set_like
+    unless self.answer_likes.count == 0 || self.answer_likes.count == 1
+      "likes"
+    else
+      "like"
+    end
+  end
 end

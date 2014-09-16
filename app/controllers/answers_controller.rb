@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
     if @like.save
       user.points +=5
       user.save
-      redirect_to question_path(@question)
+      #redirect_to question_path(@question)
     end
   end
 
