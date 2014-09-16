@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
+      MyMailer.answer_notification(@answer).deliver
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -39,7 +40,7 @@ class AnswersController < ApplicationController
         user_deactivate.points -=25
         user_deactivate.save
       end
-
+      MyMailer.accepted_answer_notification(@answer).deliver
       @answer.accept = true
       @answer.save
       user.points +=25

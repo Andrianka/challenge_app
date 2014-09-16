@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable, :omniauthable
   # :recoverable, :rememberable and :trackable
   
-  devise :database_authenticatable, :registerable, :validatable, :omniauthable,  
-          :omniauth_providers => [:github]
+  devise :database_authenticatable, :registerable, :validatable,:omniauthable,  
+          :omniauth_providers => [:github] 
 
 
   has_many :questions, dependent: :destroy
@@ -21,10 +21,10 @@ class User < ActiveRecord::Base
   end
 
   def name
-    unless self.first_name.nil? && self.last_name.nil?
+    unless self.first_name.empty? && self.last_name.empty?
       "#{self.first_name} #{self.last_name}"
     else
-      email
+      self.email
     end
   end
 

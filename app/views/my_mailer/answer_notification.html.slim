@@ -1,0 +1,12 @@
+h3
+  ="Hello, #{@user.name}"
+h4
+  ="You have answer for your question"
+p
+  -if @answer.contents.length > 40
+    = "#{@answer.contents.first(40)}..."
+  -else
+    = "#{@answer.contents}"
+br  
+  = "Link to this question: "
+  = link_to @answer.question.title, question_url(@answer.question)

@@ -1,0 +1,9 @@
+h3
+  ' The list of user leaders
+-for user in @users
+  p
+    = user.name
+    =" #{user.points} points "
+    - if user.badge == true
+      = image_tag 'badge.png', size: '20x20'
+    
