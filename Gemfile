@@ -39,3 +39,4 @@ gem 'less-rails'
 gem 'therubyracer', :platforms => :ruby
 gem "omniauth-github", '1.1.1'
 gem 'figaro'
+gem 'markdown-rails'

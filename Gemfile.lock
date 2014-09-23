@@ -108,6 +108,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    markdown-rails (0.2.1)
+      rails
+      rdiscount (>= 1.6.8, < 2.0)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.3.4)
@@ -165,6 +168,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    rdiscount (1.6.8)
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
@@ -251,6 +255,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  markdown-rails
   omniauth-github (= 1.1.1)
   paperclip
   poltergeist (~> 1.5.0)

@@ -1,5 +1,6 @@
 .answer id="answer-#{answer.id}"
-  .contents= answer.contents
+  .contents
+    = Markdown.new(answer.contents).to_html.html_safe
   .details
     '  Answered on
     = l(answer.created_at, format: :long)
