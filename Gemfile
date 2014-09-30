@@ -34,9 +34,9 @@ group :test do
 end
 
 gem 'paperclip'
-gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'therubyracer', :platforms => :ruby
 gem "omniauth-github", '1.1.1'
 gem 'figaro'
 gem 'markdown-rails'
+gem 'kaminari'

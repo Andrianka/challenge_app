@@ -9,24 +9,26 @@
   .links
     -if signed_in? && @question.user == current_user
       = link_to 'Edit', edit_question_path(@question)
-      '  |
+      '
       = link_to 'Delete', question_path(@question, method: :delete)
 
-  h3 Answers
+  h3 class="content-answer" Answers
 
-  - if @question.answers.any?
-    = render @question.answers
-  - else
-    '  There are no answers to this question.
+  .box-answer
+    - if @answers.any?
+      = render @answers
+      = paginate @answers
+    - else
+      '  There are no answers to this question.
 
-  -unless @question.answers.where(:accept=>true).first
-    h3 Add answer
+    -unless @answers.where(:accept=>true).first
+      h3 Add answer
 
-    = form_for [@question, @answer] do |f|
+      = form_for [@question, @answer] do |f|
 
-      .field
-        = f.label :contents
-        = f.text_area :contents
+        .field
+          = f.label :contents
+          = f.text_area :contents
 
-      .actions= f.submit 'Save'
+        .actions= f.button 'Save', :class=>"btn btn-primary"
 

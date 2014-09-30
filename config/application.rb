@@ -23,5 +23,6 @@ module ChallengeApp
     config.generators do |g|
       g.template_engine :slim
     end
+    config.assets.paths << "#{Rails.root}/vendor/assets-plugins"
   end
 end

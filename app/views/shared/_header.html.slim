@@ -4,27 +4,12 @@ header
       - flash.each do |key, message|
         div class= "flash-messages #{key}"
           p= message
-
-  = link_to "Challenge App", root_path
-  '  |
-  - if user_signed_in?
-    ' Welcome,
-    = current_user.name
-    '  |
-    = link_to "Profile", edit_user_registration_path
-    '  |
-    = link_to "Leadboard", leaderboard_users_path
-    '  |
-    = "You have #{current_user.points} points"
-    -if current_user.badge == true
-      =image_tag 'badge.png', size:"40x40"
-    '  |
-    = link_to "Sign out", destroy_user_session_path, method: :delete
-  - else
-    = link_to "Sign in", new_user_session_path
-    '  Or 
-    = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
-    '  |
-    = link_to "Sign up", new_user_registration_path
-
-
+  -if user_signed_in? && current_user.badge == true 
+    .header_leader
+      .header_top
+        =render 'shared/links'
+  -else
+    .header
+      .header_top
+        =render 'shared/links'
+  .header_bottom

@@ -3,11 +3,12 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all
+    @questions = Question.page(params[:page]).per(10)
   end
 
   def show
     @answer = Answer.new
+    @answers = @question.answers.page(params[:page]).per(5)
   end
 
   def new
