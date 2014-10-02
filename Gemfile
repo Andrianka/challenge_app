@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # core
 gem 'rails', '4.1.1'
-gem 'sqlite3'
 gem 'devise'
 
 # frontend
@@ -20,6 +19,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # development
 group :development do
   gem 'spring'
+end
+
+group :production do
+  gem 'pg'
+end
+
+group :development, :test do
+  gem 'pg'
 end
 
 # testing
@@ -40,3 +47,5 @@ gem "omniauth-github", '1.1.1'
 gem 'figaro'
 gem 'markdown-rails'
 gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
