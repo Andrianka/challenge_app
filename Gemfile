@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # core
 gem 'rails', '4.1.1'
 gem 'devise'
-
+gem 'pg'
 # frontend
 gem 'slim-rails'
 gem 'sass-rails', '~> 4.0.3'
@@ -25,9 +25,6 @@ group :production do
   gem 'pg'
 end
 
-group :development, :test do
-  gem 'pg'
-end
 
 # testing
 group :test do

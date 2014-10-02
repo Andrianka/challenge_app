@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require_tree ../../../vendor/assets-plugins/jquery/css
- *= require_tree ../../../vendor/assets-plugins/bootstrap/css
+ * require_tree ../../../vendor/assets-plugins/bootstrap/css
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body {
   background-color: #FFF3F3;

@@ -24,5 +24,6 @@ module ChallengeApp
       g.template_engine :slim
     end
     config.assets.paths << "#{Rails.root}/vendor/assets-plugins"
+    config.assets.initialize_on_precompile = false
   end
 end
