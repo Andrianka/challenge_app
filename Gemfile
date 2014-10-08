@@ -4,8 +4,21 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 gem 'devise'
 gem 'pg'
+gem 'delayed_job_active_record'
+gem 'therubyracer', :platforms => :ruby
+gem "omniauth-github", '1.1.1'
+gem 'figaro'
+gem 'paperclip'
+gem 'kaminari'
+gem 'daemons'
+
+
 # frontend
+gem 'markdown-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 gem 'slim-rails'
+gem 'less-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -21,10 +34,6 @@ group :development do
   gem 'spring'
 end
 
-group :production do
-  gem 'pg'
-end
-
 
 # testing
 group :test do
@@ -37,12 +46,11 @@ group :test do
   gem "rspec-rails"
 end
 
-gem 'paperclip'
-gem 'less-rails'
-gem 'therubyracer', :platforms => :ruby
-gem "omniauth-github", '1.1.1'
-gem 'figaro'
-gem 'markdown-rails'
-gem 'kaminari'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
+
+
+
+
+
+
+
+

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :answer_likes
   before_save :set_badge
-  has_attached_file :avatar, :styles => { :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path("noimage.jpg");
+  has_attached_file :avatar, :styles => { :thumb => "100x100>" }, :default_url => "noimage.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
