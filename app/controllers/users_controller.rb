@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
 
   def leaderboard
-  	@users = User.all.order('points DESC')
+  	@users = User.page(params[:page]).per(10).order('email DESC')
+
   end
 
   private

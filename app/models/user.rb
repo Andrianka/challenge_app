@@ -12,16 +12,17 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :answer_likes
   before_save :set_badge
-  has_attached_file :avatar, :styles => { :thumb => "100x100>" }, :default_url => "noimage.jpg"
+  has_attached_file :avatar, :styles => { :thumb => "100x100>", :medium => "150x195#" }, :default_url => "noimage.jpeg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_with AttachmentSizeValidator, :attributes => :avatar, :less_than => 1.megabytes
 
-
+  #add crop
   def to_s
     email
   end
 
   def name
-    unless self.first_name.empty? && self.last_name.empty?
+    unless self.first_name.blank? && self.last_name.blank?
       "#{self.first_name} #{self.last_name}"
     else
       self.email

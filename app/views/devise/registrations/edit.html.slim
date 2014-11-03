@@ -32,11 +32,15 @@ h2 Edit Profile
     .col-md-6
       .field
         = f.label :avatar, "Upload avatar"
+        .hint
+          ' (Avatar file size must be less than 1 MB)
         = f.file_field :avatar
         div style="margin-top:5px"
-          = link_to "Delete avatar", delete_avatar_path, method: :delete,:class=>"btn btn-primary"
+          = link_to "Delete avatar", delete_avatar_path, method: :delete, class:"btn btn-primary"
       = image_tag @user.avatar.url(:thumb)
       div style="margin-top:20px"
         = f.button "Update Profile", :class=>"btn btn-primary", :type=>'submit'
+      div
+        = link_to "Delete Profile", user_registration_path,  method: :delete, class:"btn btn-primary"
 
     

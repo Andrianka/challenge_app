@@ -6,14 +6,38 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    .header_img
-      .box1
-      .box2
-      .box3
-      .box-title
-        h1="ChallengeApp"
-    = render 'shared/header'
-    .row
-      .col-md-12
-        = yield
-      
+    .content
+      =render 'shared/links'
+      #main
+        #right_side
+          .pad
+            - if user_signed_in? 
+              = image_tag current_user.avatar.url(:medium)
+            -else
+              = image_tag 'noimage.jpeg', size: "158x196"
+            h3 Categories
+            ul
+              li
+                a href="#"  Templates (15)
+              li
+                a href="#"  Internet (10)
+              li
+                a href="#"  Tutorials (23)
+              li
+                a href="#"  Photoshop (11)
+              li
+                a href="#"  sNews (16)
+              li
+                a href="#"  Personal (5)
+            
+        #left_side
+          .intro
+            .pad
+              - if user_signed_in? 
+                = "You have #{current_user.points} points "
+                -if current_user.badge == true
+                  =image_tag 'badge.png', size:"40x40"       
+              
+          =   yield
+      =render 'shared/footer'
+

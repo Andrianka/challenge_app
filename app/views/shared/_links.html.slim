@@ -1,22 +1,61 @@
-= link_to "Challenge App", root_path
-'  
-- if user_signed_in?
-  ' 
-  = link_to "Profile", edit_user_registration_path
-  '  
-  = link_to "Leadboard", leaderboard_users_path
-  '  
-  = "You have #{current_user.points} points "
-  -if current_user.badge == true
-    =image_tag 'badge.png', size:"40x40"
-    .pull-right style="padding-top: 10px"  
-      = link_to "#{current_user.name}, sign out", destroy_user_session_path, method: :delete
-  -else
-    .pull-right  
-      = link_to "#{current_user.name}, sign out", destroy_user_session_path, method: :delete
-- else
-  = link_to "Sign in", new_user_session_path
-  '  Or 
-  = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
-  '  
-  = link_to "Sign up", new_user_registration_path 
+/ = link_to "Challenge App", root_path
+/ '  
+/ - if user_signed_in?
+/   ' 
+/   = link_to "Profile", edit_user_registration_path
+/   '  
+/   = link_to "Leadboard", leaderboard_users_path
+/   '  
+/   = "You have #{current_user.points} points "
+/   -if current_user.badge == true
+/     =image_tag 'badge.png', size:"40x40"
+/     .pull-right style="padding-top: 10px"  
+/       = link_to "#{current_user.name}, sign out", destroy_user_session_path, method: :delete
+/   -else
+/     .pull-right  
+/       = link_to "#{current_user.name}, sign out", destroy_user_session_path, method: :delete
+/ - else
+/   = link_to "Sign in", new_user_session_path
+/   '  Or 
+/   = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
+/   '  
+/   = link_to "Sign up", new_user_registration_path 
+
+#top
+  #icons
+    a href="root_path" 
+      =image_tag "home.gif" 
+    a href="#" 
+      =image_tag "contact.gif" 
+    a href="#" 
+      =image_tag "sitemap.gif" 
+  h1 Challenge App
+#menu
+  ul
+    li
+      a.current href="/"  HOME
+    - if user_signed_in?
+      li
+        = link_to "PROFILE", edit_user_registration_path
+      li
+        = link_to "LEADBOARD", leaderboard_users_path
+      li.pull-right
+        = link_to "#{current_user.name}, sign out", destroy_user_session_path, method: :delete
+      
+    - else
+      .pull-right
+        li
+         = link_to "SIGN IN", new_user_session_path
+        '  Or
+        li 
+          = link_to "SIGN IN with Github", user_omniauth_authorize_path(:github)
+        li  
+          = link_to "SIGN UP", new_user_registration_path
+    li
+      = link_to "ADD NEW QUESTION", new_question_path
+    li
+      a href="#"  ABOUTS US
+    li
+      a href="#"  CONTACT
+    
+
